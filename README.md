@@ -1,3 +1,5 @@
+![Node.js workflow](https://github.com/hjonin/eleventy-plugin-calendar/actions/workflows/node.js.yml/badge.svg)
+
 # eleventy-plugin-calendar
 
 [Eleventy](https://www.11ty.dev/) plugin containing filters for generating ICS calendar and ICS events using the Nunjucks templating engine.
