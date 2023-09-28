@@ -1,0 +1,36 @@
+{
+  "name": "eleventy-plugin-calendar",
+  "version": "1.0.0",
+  "description": "A plugin for generating an ICS calendar and events.",
+  "main": "eleventy.config.js",
+  "scripts": {
+    "test": "npx ava",
+    "sample": "cd sample && npx @11ty/eleventy --config=config-sample.js",
+    "clean": "rm -rf sample/_site"
+  },
+  "keywords": [
+    "eleventy",
+    "eleventy-plugin"
+  ],
+  "author": "hjonin",
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^5.3.1",
+    "ics": "^3.5.0",
+    "luxon": "^3.4.3"
+  },
+  "repository": "git@github.com:hjonin/eleventy-plugin-calendar.git",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
+  "ava": {
+    "environmentVariables": {},
+    "failFast": false,
+    "files": [
+      "./test/*.js"
+    ]
+  }
+}
