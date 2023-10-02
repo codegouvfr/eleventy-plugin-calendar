@@ -11,7 +11,7 @@ Turn your posts directly into events that will show up in a published ICS calend
 ## Installation
 
 ```
-npm install eleventy-plugin-calendar 
+npm install @codegouvfr/eleventy-plugin-calendar 
 ```
 
 Open up your Eleventy config file (probably `eleventy.config.js`) and use `addPlugin`:
