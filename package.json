@@ -14,18 +14,14 @@
   ],
   "author": "hjonin",
   "license": "MIT",
-  "devDependencies": {
-    "ava": "^5.3.1",
+  "dependencies": {
     "ics": "^3.5.0",
     "luxon": "^3.4.3"
   },
+  "devDependencies": {
+    "ava": "^5.3.1"
+  },
   "repository": "git@github.com:codegouvfr/eleventy-plugin-calendar.git",
-  "files": [
-    "dist",
-    "LICENSE",
-    "README.md",
-    "package.json"
-  ],
   "ava": {
     "environmentVariables": {},
     "failFast": false,
