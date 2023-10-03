@@ -16,7 +16,7 @@ npm install @codegouvfr/eleventy-plugin-calendar
 
 Open up your Eleventy config file (probably `eleventy.config.js`) and use `addPlugin`:
 ```js
-const calendarPlugin = require("eleventy-plugin-calendar");
+const calendarPlugin = require("@codegouvfr/eleventy-plugin-calendar");
 
 module.exports = eleventyConfig => {
     eleventyConfig.addPlugin(calendarPlugin);
@@ -31,7 +31,7 @@ You're now supplied with the following filters:
 ### Options
 
 ```js
-const calendarPlugin = require("eleventy-plugin-calendar");
+const calendarPlugin = require("@codegouvfr/eleventy-plugin-calendar");
 
 module.exports = eleventyConfig => {
     eleventyConfig.addPlugin(calendarPlugin, {

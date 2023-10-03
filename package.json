@@ -19,7 +19,7 @@
     "ics": "^3.5.0",
     "luxon": "^3.4.3"
   },
-  "repository": "git@github.com:hjonin/eleventy-plugin-calendar.git",
+  "repository": "git@github.com:codegouvfr/eleventy-plugin-calendar.git",
   "files": [
     "dist",
     "LICENSE",
