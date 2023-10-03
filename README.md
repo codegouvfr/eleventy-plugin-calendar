@@ -1,4 +1,4 @@
-![Node.js workflow](https://github.com/hjonin/eleventy-plugin-calendar/actions/workflows/node.js.yml/badge.svg)
+![Node.js workflow](https://github.com/codegouvfr/eleventy-plugin-calendar/actions/workflows/node.js.yml/badge.svg)
 
 # eleventy-plugin-calendar
 
