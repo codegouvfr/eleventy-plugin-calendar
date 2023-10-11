@@ -1,6 +1,6 @@
 {
   "name": "@codegouvfr/eleventy-plugin-calendar",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A plugin for generating an ICS calendar and events.",
   "main": "eleventy.config.js",
   "scripts": {
