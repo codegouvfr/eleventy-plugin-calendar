@@ -22,7 +22,7 @@ const eventToJsonEvent = (event, options = {}) => {
             "start":
                 [date.year, date.month, date.day],
             "end":
-                [date.year, date.month, date.day.plus({ days: 1 })]
+                [date.year, date.month, date.plus({ days: 1 }).day]
         }
     } else {
         time = {
