@@ -16,13 +16,13 @@ const eventToJsonEvent = (event, options = {}) => {
     const parsedDate = parseDate(event.data.date);
     const date = parsedDate.isValid ? parsedDate : DateTime.now();
     let time;
-    if (!date.hour && !date.minute) {
+    if (!(date.hour || date.minute)) {
         // ALl day event
         time = {
             "start":
                 [date.year, date.month, date.day],
             "end":
-                [date.year, date.month, date.day + 1]
+                [date.year, date.month, date.day.plus({ days: 1 })]
         }
     } else {
         time = {
@@ -30,7 +30,7 @@ const eventToJsonEvent = (event, options = {}) => {
                 [date.year, date.month, date.day, date.hour, date.minute],
             "duration":
                 {
-                    "minutes": event.data.duration | options.defaultDuration
+                    "minutes": event.data.duration || options.defaultDuration
                 }
         }
     }
