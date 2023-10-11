@@ -35,10 +35,12 @@ const calendarPlugin = require("@codegouvfr/eleventy-plugin-calendar");
 
 module.exports = eleventyConfig => {
     eleventyConfig.addPlugin(calendarPlugin, {
-        defaultDuration: 60,
+        defaultDuration: {
+            minutes: 60
+        },
         defaultOrganizer: {
             name: "hjonin",
-            email: "hjonin@foo.bar"
+            email: "h@jon.in"
         }
     });
 };
@@ -54,15 +56,34 @@ Place the files anywhere in your project and they will be transformed into a `ca
 
 Ultimately your calendar will be available at `https://yourwebsite.com/calendar.ics`.
 
-Run the example:
-```
-npm run sample
-[npm clean]
+See [`sample/event/index.md`](sample/event/index.md) for an example event. Event variables are:
+```json
+{
+  "title": "string",
+  "description": "string",
+  "date": "date",
+  "duration": {
+    "days": "number",
+    "hours": "number",
+    "minutes": "number"
+  },
+  "location": "string",
+  "organizer": {
+    "name": "string",
+    "email": "string"
+  }
+}
 ```
 
 ### Note on dates
 
 They must be of HTML format, see [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Date_and_time_formats#examples) for examples.
+
+## Run the example:
+```
+npm run sample
+[npm clean]
+```
 
 ## Development and testing
 

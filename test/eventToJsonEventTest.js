@@ -12,7 +12,10 @@ test("test null event", async t => {
 test("test invalid date", async t => {
     const event = {
         data: {
-            date: "invalid date"
+            date: "invalid date",
+            duration: {
+                minutes: 60
+            }
         }
     };
     const jsonEvent = calendar.eventToJsonEvent(event);
@@ -33,10 +36,11 @@ test("test default options", async t => {
         data: {}
     };
     const options = {
-        defaultDuration: 60,
+        defaultDuration: {
+            minutes: 60
+        },
         defaultOrganizer: {
-            name: "John Doe",
-            email: "john@doe.org"
+            name: "John Doe"
         }
     }
     const jsonEvent = calendar.eventToJsonEvent(event, options);
@@ -45,8 +49,7 @@ test("test default options", async t => {
                 minutes: 60
             },
             organizer: {
-                name: "John Doe",
-                email: "john@doe.org"
+                name: "John Doe"
             }
         }
     );
@@ -55,7 +58,10 @@ test("test default options", async t => {
 test("test all day event", async t => {
     const event = {
         data: {
-            date: DateTime.fromFormat("2023-09-10", "yyyy-MM-dd", {zone: "utc"}).toJSDate()
+            date: DateTime.fromFormat("2023-09-10", "yyyy-MM-dd", {zone: "utc"}).toJSDate(),
+            duration: {
+                days: 1
+            }
         }
     };
     const jsonEvent = calendar.eventToJsonEvent(event);

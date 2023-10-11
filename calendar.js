@@ -5,6 +5,10 @@ const parseDate = (dateObj) => {
     return DateTime.fromJSDate(dateObj, {zone: "utc"});
 }
 
+const isAllDayEvent = (duration) => {
+    return duration.days && !duration.hours && !duration.minutes;
+}
+
 const toHtmlString = (date) => {
     return parseDate(date).toFormat("yyyy-LL-dd");
 }
@@ -15,44 +19,31 @@ const eventToJsonEvent = (event, options = {}) => {
     }
     const parsedDate = parseDate(event.data.date);
     const date = parsedDate.isValid ? parsedDate : DateTime.now();
+    const duration = event.data.duration || options.defaultDuration || {};
     let time;
-    if (!(date.hour || date.minute)) {
-        // ALl day event
+    if (isAllDayEvent(duration)) {
+        // Day event
         time = {
             "start":
                 [date.year, date.month, date.day],
             "end":
-                [date.year, date.month, date.plus({ days: 1 }).day]
+                [date.year, date.month, date.plus({ days: duration.days }).day]
         }
     } else {
         time = {
             "start":
                 [date.year, date.month, date.day, date.hour, date.minute],
-            "duration":
-                {
-                    "minutes": event.data.duration || options.defaultDuration
-                }
+            duration
         }
     }
-    const organizer = event.data.organizer ? {
-        "organizer": {
-            "name": event.data.organizer.name,
-            "email": event.data.organizer.email
-        }
-    } : {
-        "organizer": {
-            "name" : options.defaultOrganizer?.name,
-            "email": options.defaultOrganizer?.email
-        }
-    };
     return {
         ...time,
         ...{
-            "title": event.data?.title,
-            "description": event.data?.description,
-            "location": event.data?.location
+            title: event.data?.title,
+            description: event.data?.description,
+            location: event.data?.location
         },
-        ...organizer
+        organizer : event.data.organizer || options.defaultOrganizer
     }
 };
 
