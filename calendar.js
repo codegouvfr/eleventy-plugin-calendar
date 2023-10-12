@@ -5,45 +5,49 @@ const parseDate = (dateObj) => {
     return DateTime.fromJSDate(dateObj, {zone: "utc"});
 }
 
-const isAllDayEvent = (duration) => {
-    return duration.days && !duration.hours && !duration.minutes;
+const toHtmlString = (dateObj) => {
+    return parseDate(dateObj).toFormat("yyyy-LL-dd");
 }
 
-const toHtmlString = (date) => {
-    return parseDate(date).toFormat("yyyy-LL-dd");
+const isAllDay = (date) => {
+    return !date.hour
+        && !date.minute
+        && !date.second;
 }
 
 const eventToJsonEvent = (event, options = {}) => {
-    if (!event) {
-        return null;
+    const time = {};
+    let start = parseDate(event.data.start);
+    if (!start.isValid) {
+        throw new TypeError("Invalid or missing event start date.");
     }
-    const parsedDate = parseDate(event.data.date);
-    const date = parsedDate.isValid ? parsedDate : DateTime.now();
-    const duration = event.data.duration || options.defaultDuration || {};
-    let time;
-    if (isAllDayEvent(duration)) {
-        // Day event
-        time = {
-            "start":
-                [date.year, date.month, date.day],
-            "end":
-                [date.year, date.month, date.plus({ days: duration.days }).day]
-        }
+    if (isAllDay(start) || !event.data.end) {
+        time.start = [start.year, start.month, start.day];
     } else {
-        time = {
-            "start":
-                [date.year, date.month, date.day, date.hour, date.minute],
-            duration
+        time.start = [start.year, start.month, start.day, start.hour, start.minute];
+    }
+    if (event.data.end) {
+        let end = parseDate(event.data.end);
+        if (isAllDay(start) && isAllDay(end)) {
+            time.end = [end.year, end.month, end.day];
+        } else {
+            time.end = [end.year, end.month, end.day, end.hour, end.minute];
         }
+    } else if (event.data.duration) {
+        time.duration = event.data.duration;
+    } else {
+        // All day event
+        const nextDay = start.plus({days: 1});
+        time.end = [nextDay.year, nextDay.month, nextDay.day]
     }
     return {
         ...time,
         ...{
             title: event.data?.title,
             description: event.data?.description,
-            location: event.data?.location
-        },
-        organizer : event.data.organizer || options.defaultOrganizer
+            location: event.data?.location,
+            organizer: event.data.organizer || options.defaultOrganizer
+        }
     }
 };
 

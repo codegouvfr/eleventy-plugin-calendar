@@ -1,10 +1,7 @@
 ---
-title: "Sample event"
+title: "Sample all-day event"
 tags: events
 description: A sample all-day event to add to the calendar.
-date: 2023-09-10
-duration:
-    days: 1
-location: online
+start: 2023-09-10
 ---
-It may contain a body too, telling the event {{ title }} will occur on {{ date }}.
+It may contain a body too.

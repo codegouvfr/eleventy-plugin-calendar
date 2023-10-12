@@ -61,7 +61,8 @@ See [`sample/event/index.md`](sample/event/index.md) for an example event. Event
 {
   "title": "string",
   "description": "string",
-  "date": "date",
+  "start": "date",
+  "end": "date",
   "duration": {
     "days": "number",
     "hours": "number",
@@ -75,9 +76,13 @@ See [`sample/event/index.md`](sample/event/index.md) for an example event. Event
 }
 ```
 
-### Note on dates
+### Notes on dates
 
-They must be of HTML format, see [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Date_and_time_formats#examples) for examples.
+Dates must be of HTML format, see [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Date_and_time_formats#examples) for examples.
+
+Either `end` or `duration` is required, but not both. However, if both are provided, `end` prevails on `duration`.
+
+If `start` has not time or no `end` is provided, the event is considered "all-day".
 
 ## Run the example:
 ```
