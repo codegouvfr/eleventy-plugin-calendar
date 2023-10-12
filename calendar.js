@@ -21,7 +21,7 @@ const eventToJsonEvent = (event, options = {}) => {
     if (!start.isValid) {
         throw new TypeError("Invalid or missing event start date.");
     }
-    if (isAllDay(start) || !event.data.end) {
+    if (isAllDay(start) || !(event.data.end || event.data.duration)) {
         time.start = [start.year, start.month, start.day];
     } else {
         time.start = [start.year, start.month, start.day, start.hour, start.minute];
