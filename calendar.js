@@ -33,7 +33,7 @@ const eventToJsonEvent = (event, options = {}) => {
         } else {
             time.end = [end.year, end.month, end.day, end.hour, end.minute];
         }
-    } else if (event.data.duration) {
+    } else if (!isAllDay(start) && event.data.duration) {
         time.duration = event.data.duration;
     } else {
         // All day event
