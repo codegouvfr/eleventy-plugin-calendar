@@ -45,7 +45,7 @@ const eventToJsonEvent = (event, options = {}) => {
         ...{
             title: event.data?.title,
             description: event.data?.description,
-            location: event.data?.location,
+            location: event.data?.location || options.defaultLocation,
             organizer: event.data.organizer || options.defaultOrganizer
         }
     }

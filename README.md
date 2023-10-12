@@ -35,9 +35,7 @@ const calendarPlugin = require("@codegouvfr/eleventy-plugin-calendar");
 
 module.exports = eleventyConfig => {
     eleventyConfig.addPlugin(calendarPlugin, {
-        defaultDuration: {
-            minutes: 60
-        },
+        defaultLocation: "online",
         defaultOrganizer: {
             name: "hjonin",
             email: "h@jon.in"

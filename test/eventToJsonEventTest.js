@@ -17,12 +17,14 @@ test("test default options", async t => {
         }
     };
     const options = {
+        defaultLocation: "online",
         defaultOrganizer: {
             name: "John Doe"
         }
     }
     const jsonEvent = calendar.eventToJsonEvent(event, options);
     t.like(jsonEvent, {
+            location: "online",
             organizer: {
                 name: "John Doe"
             }
