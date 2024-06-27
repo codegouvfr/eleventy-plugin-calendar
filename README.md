@@ -76,7 +76,12 @@ See [`sample/event/index.md`](sample/event/index.md) for an example event. Event
 
 ### Notes on dates
 
-Dates must be of HTML format, see [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Date_and_time_formats#examples) for examples.
+Dates must be of ISO 8601 format, see [here](https://github.com/moment/luxon/blob/master/docs/parsing.md#iso-8601) for full examples, or below:
+
+```
+2016-05-25
+2016-05-25T09:24
+```
 
 Either `end` or `duration` is required, but not both. However, if both are provided, `end` prevails on `duration`.
 

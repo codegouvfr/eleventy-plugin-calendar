@@ -42,6 +42,8 @@ const eventToJsonEvent = (event, options = {}) => {
     }
     return {
         ...time,
+        startInputType: "utc",
+        endInputType: "utc",
         ...{
             title: event.data?.title,
             description: event.data?.description,
