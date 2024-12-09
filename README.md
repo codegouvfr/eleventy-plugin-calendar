@@ -54,7 +54,7 @@ Place the files anywhere in your project and they will be transformed into a `ca
 
 Ultimately your calendar will be available at `https://yourwebsite.com/calendar.ics`.
 
-See [`sample/event/index.md`](sample/event/index.md) for an example event. Event variables are:
+See [`sample/event-all-day/index.md`](sample/event-all-day/index.md) and [`sample/event-with-time/index.md`](sample/event-with-time/index.md) for example events. Event variables are:
 ```json
 {
   "title": "string",
@@ -90,7 +90,7 @@ If `start` has not time or no `end` is provided, the event is considered "all-da
 ## Run the example:
 ```
 npm run sample
-[npm clean]
+[npm run clean]
 ```
 
 ## Development and testing

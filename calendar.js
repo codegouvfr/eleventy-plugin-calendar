@@ -2,6 +2,9 @@ const {DateTime} = require("luxon");
 
 const parseDate = (dateObj) => {
     // dateObj input: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
+    if (typeof dateObj === "string") { // Case when time is provided, it does not get converted to JSDate
+        return DateTime.fromISO(dateObj, {zone: "utc"});
+    }
     return DateTime.fromJSDate(dateObj, {zone: "utc"});
 }
 
